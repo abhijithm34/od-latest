@@ -189,15 +189,15 @@ const FacultyODRequestList = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Faculty Dashboard
           </Typography>
-          <Button 
-            color="inherit" 
+          <Button
+            color="inherit"
             onClick={() => navigate("/guide")}
             sx={{ mr: 2 }}
           >
             Guide Me
           </Button>
-          <Button 
-            color="inherit" 
+          <Button
+            color="inherit"
             onClick={() => navigate("/dashboard")}
             sx={{ mr: 2 }}
           >
@@ -454,17 +454,6 @@ const FacultyODRequestList = () => {
           </DialogActions>
         </Dialog>
       </Container>
-      <Box sx={{ marginTop: "auto", mb: 2 }}>
-        <Contributors
-          images={[
-            "Abhijith M.jpg",
-            "Roshni Banu S.jpg",
-            "Deepak R.jpg",
-            "Divapriya B.jpg",
-            "Kavya Sri V.jpg",
-          ]}
-        />
-      </Box>
     </Box>
   );
 };

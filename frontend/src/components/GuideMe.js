@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Container,
   Paper,
@@ -18,8 +18,8 @@ import {
   Chip,
   Divider,
   Alert,
-  AlertTitle
-} from '@mui/material';
+  AlertTitle,
+} from "@mui/material";
 import {
   ExpandMore as ExpandMoreIcon,
   School as SchoolIcon,
@@ -32,15 +32,16 @@ import {
   ArrowForward as ArrowForwardIcon,
   Book as BookIcon,
   Help as HelpIcon,
-  Security as SecurityIcon
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+  Security as SecurityIcon,
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import Contributors from "./Contributors"; // Add this import
 
 const GuideMe = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [expanded, setExpanded] = useState('panel1');
+  const [expanded, setExpanded] = useState("panel1");
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -54,16 +55,16 @@ const GuideMe = () => {
         "Fill in all required fields: Event details, dates, and purpose",
         "Upload supporting documents (brochures, certificates, etc.)",
         "Review your information before submitting",
-        "Submit the request and wait for approval"
-      ]
+        "Submit the request and wait for approval",
+      ],
     },
     {
       title: "Required Documents",
       items: [
         "Event brochure or invitation letter",
         "Registration certificate (if applicable)",
-        "Any other relevant supporting documents"
-      ]
+        "Any other relevant supporting documents",
+      ],
     },
     {
       title: "Tracking Your Request",
@@ -71,9 +72,9 @@ const GuideMe = () => {
         "Go to 'My OD Requests' to view all your submissions",
         "Check the status: Pending, Approved, or Rejected",
         "View comments from faculty/HOD if any",
-        "Download approved OD letters"
-      ]
-    }
+        "Download approved OD letters",
+      ],
+    },
   ];
 
   const facultyGuide = [
@@ -84,8 +85,9 @@ const GuideMe = () => {
         "View pending requests assigned to you",
         "Review student details and supporting documents",
         "Approve, reject, or add comments",
-        "Forward approved requests to HOD for final approval"
-      ]
+        "After hod approval, verify event proof submitted by student",
+        "All class handling faculties are notified about the students's approved OD",
+      ],
     },
     {
       title: "Approval Criteria",
@@ -93,9 +95,9 @@ const GuideMe = () => {
         "Verify event authenticity and relevance",
         "Check if dates don't conflict with academic schedule",
         "Ensure proper documentation is provided",
-        "Consider student's academic performance"
-      ]
-    }
+        "Consider student's academic performance",
+      ],
+    },
   ];
 
   const hodGuide = [
@@ -106,8 +108,8 @@ const GuideMe = () => {
         "Check faculty recommendations and comments",
         "Verify all documentation and approvals",
         "Make final decision: Approve or Reject",
-        "Generate OD letters for approved requests"
-      ]
+        "Generate OD letters for approved requests",
+      ],
     },
     {
       title: "Department Oversight",
@@ -115,9 +117,9 @@ const GuideMe = () => {
         "Monitor overall OD request patterns",
         "Ensure compliance with institutional policies",
         "Maintain records for audit purposes",
-        "Coordinate with other departments if needed"
-      ]
-    }
+        "Coordinate with other departments if needed",
+      ],
+    },
   ];
 
   const adminGuide = [
@@ -128,8 +130,8 @@ const GuideMe = () => {
         "Configure system settings and policies",
         "Monitor system performance and usage",
         "Generate reports and analytics",
-        "Handle technical issues and support"
-      ]
+        "Handle technical issues and support",
+      ],
     },
     {
       title: "User Management",
@@ -137,9 +139,25 @@ const GuideMe = () => {
         "Create and manage faculty accounts",
         "Assign roles and permissions",
         "Reset passwords and handle account issues",
-        "Maintain user directory"
-      ]
-    }
+        "Maintain user directory",
+      ],
+    },
+    {
+      title: "Advanced Admin Actions",
+      steps: [
+        "Create app password for new email accounts to enable secure notifications",
+        "Steps to create app password:",
+        "1. Go to your Google Account settings",
+        "2. Navigate to Security > App passwords",
+        "3. Select the app and device you want to generate the password for",
+        "4. Click Generate and copy the password",
+        "5. Use this password in the application settings",
+        "Add students in bulk by uploading Excel files in the specified format including all required fields:",
+        "Change request forward time from faculty advisor to admin customize how long requests stay in faculty advisor's queue",
+        "Apply filters to OD requests for targeted review and management",
+        "Download OD requests and user data as Excel files for reporting and analysis",
+      ],
+    },
   ];
 
   const generalTips = [
@@ -148,17 +166,29 @@ const GuideMe = () => {
     "Save your work frequently when filling forms",
     "Contact your department coordinator for urgent requests",
     "Keep copies of all submitted documents",
-    "Check your email for notifications and updates"
+    "Check your email for notifications and updates",
+  ];
+
+  const contributorImages = [
+    "Kavya Sri V.jpg",
+    "Roshni Banu S.jpg",
+    "Abhijith M.jpg",
+    "Divapriya B.jpg",
+    "Deepak R.jpg",
   ];
 
   const renderRoleSpecificGuide = () => {
     if (!user) return null;
 
     switch (user.role) {
-      case 'student':
+      case "student":
         return (
           <Box>
-            <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+            >
               <SchoolIcon color="primary" />
               Student Guide
             </Typography>
@@ -196,10 +226,14 @@ const GuideMe = () => {
             ))}
           </Box>
         );
-      case 'faculty':
+      case "faculty":
         return (
           <Box>
-            <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+            >
               <PersonIcon color="primary" />
               Faculty Guide
             </Typography>
@@ -237,10 +271,14 @@ const GuideMe = () => {
             ))}
           </Box>
         );
-      case 'hod':
+      case "hod":
         return (
           <Box>
-            <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+            >
               <AdminIcon color="primary" />
               HOD Guide
             </Typography>
@@ -278,10 +316,14 @@ const GuideMe = () => {
             ))}
           </Box>
         );
-      case 'admin':
+      case "admin":
         return (
           <Box>
-            <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+            >
               <AdminIcon color="primary" />
               Administrator Guide
             </Typography>
@@ -327,7 +369,7 @@ const GuideMe = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Paper elevation={3} sx={{ p: 4 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
           <HelpIcon color="primary" sx={{ fontSize: 40 }} />
           <Typography variant="h4" component="h1" gutterBottom>
             Guide Me
@@ -336,7 +378,8 @@ const GuideMe = () => {
 
         <Alert severity="info" sx={{ mb: 3 }}>
           <AlertTitle>Welcome to the OD Application Guide!</AlertTitle>
-          This comprehensive guide will help you understand how to use the On Duty application system effectively.
+          This comprehensive guide will help you understand how to use the On
+          Duty application system effectively.
         </Alert>
 
         <Grid container spacing={3}>
@@ -349,9 +392,16 @@ const GuideMe = () => {
               </Alert>
             )}
 
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ mt: 3 }}>
+            <Accordion
+              expanded={expanded === "panel1"}
+              onChange={handleChange("panel1")}
+              sx={{ mt: 3 }}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                >
                   <BookIcon color="primary" />
                   General Tips & Best Practices
                 </Typography>
@@ -370,9 +420,15 @@ const GuideMe = () => {
               </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+            <Accordion
+              expanded={expanded === "panel2"}
+              onChange={handleChange("panel2")}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                >
                   <SecurityIcon color="primary" />
                   Security Guidelines
                 </Typography>
@@ -410,9 +466,15 @@ const GuideMe = () => {
               </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            <Accordion
+              expanded={expanded === "panel3"}
+              onChange={handleChange("panel3")}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                >
                   <AssignmentIcon color="primary" />
                   Request Status Meanings
                 </Typography>
@@ -420,10 +482,10 @@ const GuideMe = () => {
               <AccordionDetails>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
-                    <Chip 
-                      label="Pending" 
-                      color="warning" 
-                      variant="outlined" 
+                    <Chip
+                      label="Pending"
+                      color="warning"
+                      variant="outlined"
                       sx={{ mb: 1 }}
                     />
                     <Typography variant="body2" paragraph>
@@ -431,10 +493,10 @@ const GuideMe = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Chip 
-                      label="Approved" 
-                      color="success" 
-                      variant="outlined" 
+                    <Chip
+                      label="Approved"
+                      color="success"
+                      variant="outlined"
                       sx={{ mb: 1 }}
                     />
                     <Typography variant="body2" paragraph>
@@ -442,10 +504,10 @@ const GuideMe = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Chip 
-                      label="Rejected" 
-                      color="error" 
-                      variant="outlined" 
+                    <Chip
+                      label="Rejected"
+                      color="error"
+                      variant="outlined"
                       sx={{ mb: 1 }}
                     />
                     <Typography variant="body2" paragraph>
@@ -453,10 +515,10 @@ const GuideMe = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Chip 
-                      label="Under Review" 
-                      color="info" 
-                      variant="outlined" 
+                    <Chip
+                      label="Under Review"
+                      color="info"
+                      variant="outlined"
                       sx={{ mb: 1 }}
                     />
                     <Typography variant="body2" paragraph>
@@ -469,31 +531,37 @@ const GuideMe = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Card sx={{ position: 'sticky', top: 20 }}>
+            <Card sx={{ position: "sticky", top: 20 }}>
               <CardContent>
-                <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                >
                   <ArrowForwardIcon color="primary" />
                   Quick Actions
                 </Typography>
                 <Divider sx={{ my: 2 }} />
-                
+
                 {user && (
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <Box
+                    sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+                  >
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => navigate('/dashboard')}
+                      onClick={() => navigate("/dashboard")}
                       fullWidth
                     >
                       Go to Dashboard
                     </Button>
-                    
-                    {user.role === 'student' && (
+
+                    {user.role === "student" && (
                       <>
                         <Button
                           variant="outlined"
                           color="primary"
-                          onClick={() => navigate('/student/od-request')}
+                          onClick={() => navigate("/student/od-request")}
                           fullWidth
                         >
                           Submit OD Request
@@ -501,41 +569,41 @@ const GuideMe = () => {
                         <Button
                           variant="outlined"
                           color="primary"
-                          onClick={() => navigate('/student/my-requests')}
+                          onClick={() => navigate("/student/my-requests")}
                           fullWidth
                         >
                           View My Requests
                         </Button>
                       </>
                     )}
-                    
-                    {user.role === 'faculty' && (
+
+                    {user.role === "faculty" && (
                       <Button
                         variant="outlined"
                         color="primary"
-                        onClick={() => navigate('/faculty/od-requests')}
+                        onClick={() => navigate("/faculty/od-requests")}
                         fullWidth
                       >
                         Manage Requests
                       </Button>
                     )}
-                    
-                    {user.role === 'hod' && (
+
+                    {user.role === "hod" && (
                       <Button
                         variant="outlined"
                         color="primary"
-                        onClick={() => navigate('/hod/dashboard')}
+                        onClick={() => navigate("/hod/dashboard")}
                         fullWidth
                       >
                         HOD Dashboard
                       </Button>
                     )}
-                    
-                    {user.role === 'admin' && (
+
+                    {user.role === "admin" && (
                       <Button
                         variant="outlined"
                         color="primary"
-                        onClick={() => navigate('/admin/dashboard')}
+                        onClick={() => navigate("/admin/dashboard")}
                         fullWidth
                       >
                         Admin Dashboard
@@ -543,12 +611,12 @@ const GuideMe = () => {
                     )}
                   </Box>
                 )}
-                
+
                 {!user && (
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => navigate('/login')}
+                    onClick={() => navigate("/login")}
                     fullWidth
                   >
                     Login to Continue
@@ -559,8 +627,12 @@ const GuideMe = () => {
           </Grid>
         </Grid>
       </Paper>
+      <Box sx={{ mt: 4 }}>
+        <Divider sx={{ mb: 2 }} />
+        <Contributors images={contributorImages} />
+      </Box>
     </Container>
   );
 };
 
-export default GuideMe; 
+export default GuideMe;

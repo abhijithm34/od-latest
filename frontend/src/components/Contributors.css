@@ -4,6 +4,10 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f5f9ff, #eaf0fa);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .contributors-container.visible {
@@ -11,53 +15,67 @@
   transform: translateY(0);
 }
 
+.contributors-container h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+
+.contributors-container p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
 .contributors-grid {
   display: flex;
   justify-content: center;
-  gap: 40px; /* More space between contributors */
+  gap: 60px; /* More space between contributor cards */
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
 .contributor {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100px;
+  width: 160px;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contributor:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contributor-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; /* Circular images */
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow */
+  border: 4px solid #2a72e5;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
 .contributor-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .contributor-name {
-  margin-top: 8px;
+  margin-top: 12px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #333;
+  text-align: center;
 }
 
-.toggle-button {
-  background-color: #2a72e5;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.toggle-button:hover {
-  background-color: #1a4fb8;
+.contributor-role {
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
 }

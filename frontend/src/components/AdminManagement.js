@@ -1482,18 +1482,6 @@ const AdminManagement = () => {
           </Button>
         </DialogActions>
       </Dialog>
-
-      <Box sx={{ marginTop: "auto", mb: 2 }}>
-        <Contributors
-          images={[
-            "Kavya Sri V.jpg",
-            "Roshni Banu S.jpg",
-            "Abhijith M.jpg",
-            "Divapriya B.jpg",
-            "Deepak R.jpg",
-          ]}
-        />
-      </Box>
     </Box>
   );
 };

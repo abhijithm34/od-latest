@@ -28,15 +28,6 @@ const LandingPage = () => {
           >
             Sign In
           </Button>
-          <Button
-            component={Link}
-            to="/guide"
-            variant="outlined"
-            color="primary"
-            size="large"
-          >
-            Guide Me
-          </Button>
         </Box>
       </Paper>
     </Container>
